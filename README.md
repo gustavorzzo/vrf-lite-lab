@@ -12,7 +12,7 @@ This project simulates a service provider environment where multiple customers s
 
 ## 🗺️ Topology
 
-![VRF Lite Topology](https://imgur.com/a/7Roldsr)
+![VRF Lite Topology](topology.png)
 
 ### Devices
 

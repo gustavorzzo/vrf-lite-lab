@@ -1,0 +1,161 @@
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+service compress-config
+!
+hostname CORE-VRF-Lite-1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Customer1
+ !
+ address-family ipv4
+ exit-address-family
+!
+vrf definition Customer2
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+enable secret 5 $1$XhgH$s3IKfs4v6P3UMsKMtedM3.
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Port-channel5
+ no switchport
+ ip address 11.1.0.2 255.255.255.252
+ ip ospf 25 area 0
+!
+interface GigabitEthernet0/0
+ no switchport
+ no ip address
+ negotiation auto
+ channel-group 5 mode active
+!
+interface GigabitEthernet0/1
+ no switchport
+ no ip address
+ negotiation auto
+ channel-group 5 mode active
+!
+interface GigabitEthernet0/2
+ no switchport
+ no ip address
+ negotiation auto
+ channel-group 5 mode active
+!
+interface GigabitEthernet0/3
+ no switchport
+ no ip address
+ negotiation auto
+ channel-group 5 mode active
+!
+interface GigabitEthernet1/0
+ no switchport
+ vrf forwarding Customer1
+ ip address 10.0.0.2 255.255.255.0
+ ip ospf authentication message-digest
+ ip ospf message-digest-key 1 md5 7 045C1E151B205A410A1A0B07
+ ip ospf 10 area 10
+ negotiation auto
+!
+interface GigabitEthernet1/1
+ no switchport
+ vrf forwarding Customer2
+ ip address 10.0.0.2 255.255.255.0
+ ip ospf authentication message-digest
+ ip ospf message-digest-key 2 md5 7 00030615105A1D090C22425E
+ ip ospf 20 area 20
+ negotiation auto
+!
+interface GigabitEthernet1/2
+ negotiation auto
+!
+interface GigabitEthernet1/3
+ negotiation auto
+!
+interface GigabitEthernet2/0
+ negotiation auto
+!
+interface GigabitEthernet2/1
+ negotiation auto
+!
+interface GigabitEthernet2/2
+ negotiation auto
+!
+interface GigabitEthernet2/3
+ negotiation auto
+!
+interface GigabitEthernet3/0
+ negotiation auto
+!
+interface GigabitEthernet3/1
+ negotiation auto
+!
+interface GigabitEthernet3/2
+ negotiation auto
+!
+interface GigabitEthernet3/3
+ negotiation auto
+!
+router ospf 10 vrf Customer1
+ router-id 11.11.11.11
+ area 10 stub
+!
+router ospf 20 vrf Customer2
+ router-id 22.22.22.22
+ area 20 stub
+!
+router ospf 25
+ router-id 111.111.111.111
+!
+ip forward-protocol nd
+!
+ip http server
+ip http secure-server
+!
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+!
+!
+!
+!
+!
+control-plane
+!
+banner exec

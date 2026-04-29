@@ -4,7 +4,7 @@ A hands-on lab project demonstrating VRF Lite (Virtual Routing and Forwarding) i
 Overview
 This project simulates a service provider environment where multiple customers share the same physical infrastructure while maintaining complete routing table isolation. Each customer operates in its own VRF, allowing overlapping IP address spaces without conflict.
 
-![Topology](https://imgur.com/a/7Roldsr)
+![Topology]([https://imgur.com/a/7Roldsr])
 
 Device | Role | OS
 ROUTER-BACKBONE | PE Router — Internet edge | Cisco IOS

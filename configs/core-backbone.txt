@@ -1,0 +1,150 @@
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+service compress-config
+!
+hostname CORE_BACKBONE
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable secret 5 $1$TmUr$yZ.QLNFAb472yc0FqIhYn/
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Port-channel5
+ no switchport
+ ip address 11.1.0.1 255.255.255.252
+ ip ospf 1 area 0
+!
+interface Port-channel10
+ no switchport
+ ip address 12.1.0.2 255.255.255.252
+ ip ospf 1 area 0
+!
+interface GigabitEthernet0/0
+ no switchport
+ no ip address
+ negotiation auto
+ channel-group 5 mode active
+!
+interface GigabitEthernet0/1
+ no switchport
+ no ip address
+ negotiation auto
+ channel-group 5 mode active
+!
+interface GigabitEthernet0/2
+ no switchport
+ no ip address
+ negotiation auto
+ channel-group 5 mode active
+!
+interface GigabitEthernet0/3
+ no switchport
+ no ip address
+ negotiation auto
+ channel-group 5 mode active
+!
+interface GigabitEthernet1/0
+ no switchport
+ no ip address
+ negotiation auto
+ channel-group 10 mode active
+!
+interface GigabitEthernet1/1
+ no switchport
+ no ip address
+ negotiation auto
+ channel-group 10 mode active
+!
+interface GigabitEthernet1/2
+ no switchport
+ no ip address
+ negotiation auto
+ channel-group 10 mode active
+!
+interface GigabitEthernet1/3
+ no switchport
+ no ip address
+ negotiation auto
+ channel-group 10 mode active
+!
+interface GigabitEthernet2/0
+ negotiation auto
+!
+interface GigabitEthernet2/1
+ negotiation auto
+!
+interface GigabitEthernet2/2
+ negotiation auto
+!
+interface GigabitEthernet2/3
+ negotiation auto
+!
+interface GigabitEthernet3/0
+ negotiation auto
+!
+interface GigabitEthernet3/1
+ negotiation auto
+!
+interface GigabitEthernet3/2
+ negotiation auto
+!
+interface GigabitEthernet3/3
+ no switchport
+ ip address 13.1.0.2 255.255.255.252
+ ip ospf authentication message-digest
+ ip ospf message-digest-key 1 md5 7 050C131C354D58061A061902
+ ip ospf 1 area 0
+ negotiation auto
+!
+router ospf 1
+ router-id 100.0.0.0
+!
+ip forward-protocol nd
+!
+ip http server
+ip http secure-server
+!
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+!
+!
+!
+!
+!
+control-plane
+!
+banner exec

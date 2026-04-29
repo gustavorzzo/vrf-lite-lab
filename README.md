@@ -53,7 +53,7 @@ This project simulates a service provider environment where multiple customers s
 - **VRF Lite** — per-customer isolated routing tables on a shared L3 infrastructure
 - **Overlapping subnets** — same IP ranges reused across isolated VRFs (Customer1/2 and Customer3/4)
 - **OSPF Stub Areas** — reduces LSA flooding, injects default route into customer VRFs
-- **OSPF Authentication** ensures that OSPF LSAs will circulate with integrity
+- **OSPF Authentication** — ensures that OSPF LSAs will circulate with integrity
 - **EtherChannel (L3 Transit)** — Channel Groups 5 and 10 as inter-site L3 trunks
 - **NAT at the CE** — each customer handles their own NAT/PAT, keeping the backbone routing-only
 

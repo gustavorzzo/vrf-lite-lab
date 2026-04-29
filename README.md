@@ -19,7 +19,7 @@ This project simulates a service provider environment where multiple customers s
 | Device | Role | OS |
 |---|---|---|
 | ROUTER-BACKBONE | PE Router — Internet edge | Cisco IOS |
-| CORE-BACKBONE | PE Switch — VRF-aware core | Cisco IOS-XE |
+| CORE-BACKBONE | PE Switch — VRF-aware core | Cisco IOS |
 | CORE-VRF-Lite-1 | CE Switch — Customer1 & Customer2 | Cisco IOS |
 | CORE-VRF-Lite-2 | CE Switch — Customer3 & Customer4 | Cisco IOS |
 | Customer1–4 | CE Routers — customer edge | Cisco IOS |
